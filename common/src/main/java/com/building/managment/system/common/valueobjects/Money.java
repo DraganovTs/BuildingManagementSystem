@@ -1,4 +1,4 @@
-package com.building.managment.system.valueobjects;
+package com.building.managment.system.common.valueobjects;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
