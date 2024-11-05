@@ -1,6 +1,8 @@
 package com.building.managment.system.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -16,8 +18,10 @@ public class Apartment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
+    @Size(min = 1, max = 4)
     private String number;
-    @OneToOne
+    @OneToOne(mappedBy = "apartment",cascade = CascadeType.ALL)
     private Family family;
     private Integer floor;
     private BigDecimal taxPerPerson;

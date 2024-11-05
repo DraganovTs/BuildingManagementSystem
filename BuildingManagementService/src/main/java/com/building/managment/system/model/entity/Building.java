@@ -21,11 +21,11 @@ public class Building {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    @Size(min = 1, max = 50)
+    @Size(min = 5, max = 50)
     private String address;
-    @OneToMany
+    @OneToMany(mappedBy = "building",cascade = CascadeType.ALL , fetch = FetchType.LAZY)
     private List<Apartment> apartments = new ArrayList<>();
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private RepairFund repairFound = new RepairFund();
     private BigDecimal managementFee;
 

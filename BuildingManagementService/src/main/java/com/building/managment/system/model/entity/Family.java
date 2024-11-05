@@ -16,7 +16,7 @@ public class Family {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Person> members;
     @OneToOne
     private Apartment apartment;
