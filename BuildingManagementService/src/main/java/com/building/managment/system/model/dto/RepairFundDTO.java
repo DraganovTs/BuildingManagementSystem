@@ -16,7 +16,7 @@ import java.util.List;
 public class RepairFundDTO {
     private Long id;
 
-    @DecimalMin(value = "0.0", inclusive = true, message = "Balance cannot be negative")
+    @DecimalMin(value = "0.0", message = "Balance cannot be negative")
     private BigDecimal balance;
 
     @NotEmpty(message = "Transactions cannot be empty")

@@ -3,7 +3,9 @@ package com.building.managment.system.model.dto;
 
 import com.building.managment.system.model.enums.PaymentMethod;
 import com.building.managment.system.model.enums.TransactionType;
-import jakarta.validation.Valid;
+import com.building.managment.system.validation.ValidEnum;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +30,8 @@ public class TransactionDTO {
     private LocalDate date;
 
     @NotNull(message = "Transaction type is required")
+    @Enumerated(EnumType.STRING)
+    @ValidEnum(enumClass = TransactionType.class,message = "invalid transaction type")
     private TransactionType type;
 
     @NotBlank(message = "Description cannot be blank")
@@ -39,6 +43,8 @@ public class TransactionDTO {
     private BuildingDTO building;
 
     @NotNull(message = "Payment method is required")
+    @Enumerated(EnumType.STRING)
+    @ValidEnum(enumClass = PaymentMethod.class,message = "invalid payment method")
     private PaymentMethod paymentMethod;
 }
 
