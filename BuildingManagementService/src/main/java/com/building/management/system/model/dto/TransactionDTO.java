@@ -22,6 +22,7 @@ import java.time.LocalDate;
 public class TransactionDTO {
     private Long id;
 
+    @NotNull
     @DecimalMin(value = "0.0", inclusive = false, message = "Amount must be positive")
     private BigDecimal amount;
 

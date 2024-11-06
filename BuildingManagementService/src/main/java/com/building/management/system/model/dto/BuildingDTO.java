@@ -29,6 +29,7 @@ public class BuildingDTO {
 
     private RepairFundDTO repairFund;
 
+    @NotNull(message = "Management Fee must be not null")
     @DecimalMin(value = "0.0", inclusive = false, message = "Management fee must be positive")
     private BigDecimal managementFee;
 }

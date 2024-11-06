@@ -1,6 +1,9 @@
 package com.building.management.system.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -27,6 +30,7 @@ public class Building {
     private List<Apartment> apartments = new ArrayList<>();
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private RepairFund repairFound = new RepairFund();
+    @Positive(message = "Management fee must be positive")
     private BigDecimal managementFee;
 
 }

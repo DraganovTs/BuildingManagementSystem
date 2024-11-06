@@ -26,6 +26,7 @@
         <java.version>21</java.version>
         <h2.version>2.2.224</h2.version>
         <project.lombok.version>1.18.30</project.lombok.version>
+        <junit.version>4.13.2</junit.version>
     </properties>
 
     <dependencyManagement>
@@ -70,6 +71,24 @@
                 <artifactId>lombok</artifactId>
                 <version>${project.lombok.version}</version>
                 <optional>true</optional>
+            </dependency>
+<!--                        TEST-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

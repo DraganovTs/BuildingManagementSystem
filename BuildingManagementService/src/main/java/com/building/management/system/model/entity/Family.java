@@ -1,6 +1,7 @@
 package com.building.management.system.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.*;
 
 import java.util.List;
