@@ -1,7 +1,9 @@
 package com.building.management.system.exception;
 
 import com.building.management.system.model.dto.ErrorResponseDTO;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.stream.Collectors;
+
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
@@ -23,20 +25,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(response, status);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponseDTO> handleValidationExceptions(MethodArgumentNotValidException ex, WebRequest request) {
-        String errorMessage = ex.getBindingResult().getFieldErrors()
-                .stream()
-                .map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
-                .collect(Collectors.joining(", "));
 
-        ErrorResponseDTO response = new ErrorResponseDTO(
-                errorMessage,
-                false,
-                request.getDescription(false)
-        );
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponseDTO> handleGlobalException(Exception ex, WebRequest request) {
@@ -56,5 +45,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrorResponseDTO> handleRuntimeException(RuntimeException ex, WebRequest request) {
         return buildErrorResponse("An unexpected error occurred", HttpStatus.INTERNAL_SERVER_ERROR, request);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+        return super.handleMethodArgumentNotValid(ex, headers, status, request);
     }
 }

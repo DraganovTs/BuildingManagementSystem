@@ -36,4 +36,9 @@ public class BuildingManagementController {
                 ? ResponseEntity.status(HttpStatus.NO_CONTENT).build()
                 : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
+
+    @GetMapping
+    public String getHello(){
+        return "Hello World";
+    }
 }

@@ -20,6 +20,7 @@ public class BuildingServiceImpl implements BuildingService {
      */
     @Override
     public BuildingDTO createBuilding(BuildingDTO buildingDTO) {
+        System.out.println("Create Building");
         return null;
     }
 
@@ -32,6 +33,7 @@ public class BuildingServiceImpl implements BuildingService {
      */
     @Override
     public BuildingDTO getBuildingDetails(Long id) {
+        System.out.println("Get Building");
         return null;
     }
 
@@ -43,6 +45,7 @@ public class BuildingServiceImpl implements BuildingService {
      */
     @Override
     public boolean deleteBuilding() {
+        System.out.println("Delete Building");
         return false;
     }
 }

@@ -25,4 +25,7 @@ public class Apartment {
     private Family family;
     private Integer floor;
     private BigDecimal taxPerPerson;
+    @ManyToOne
+    @JoinColumn(name = "building_id")
+    private Building building;
 }
